@@ -3,6 +3,7 @@ package fr.simplex_software.quarkus.camel.integrations.file;
 import org.apache.camel.*;
 import org.apache.camel.builder.*;
 import org.apache.camel.component.aws2.s3.*;
+import org.apache.camel.component.file.*;
 
 import javax.enterprise.context.*;
 import javax.inject.*;
@@ -25,14 +26,11 @@ public class FileToS3Route extends RouteBuilder
 
   public void configure() throws Exception
   {
-    context.addComponent("aws2-s3", new AWS2S3Component(context));
     onException(IOException.class)
       .handled(true)
       .log("IOException occurred due: ${exception.message}");
-      /*.transform().simple("Error ${exception.message}")
-      .to("mock:error");*/
     from("file://tmp/input?delete=true&idempotent=true&bridgeErrorHandler=true")
-      .setHeader(AWS2S3Constants.KEY, simple("key"))
+      .setHeader(AWS2S3Constants.KEY, header(FileConstants.FILE_NAME))
       .to(aws2S3("mybucket" + RANDOM).autoCreateBucket(true).useDefaultCredentialsProvider(true));
   }
 }
