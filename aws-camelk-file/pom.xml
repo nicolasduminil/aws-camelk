@@ -19,5 +19,18 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-aws2-s3</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-minikube</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-kubernetes</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-s3</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>

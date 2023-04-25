@@ -19,15 +19,17 @@ public class FileToS3Route extends RouteBuilder
     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
     .toString();
   @ConfigProperty(name="inBox")
-  private String inBox;
+  String inBox;
   @ConfigProperty(name="s3Name")
-  private String s3Name;
+  String s3Name;
+  @ConfigProperty(name="exMsg")
+  String exMsg;
 
   public void configure() throws Exception
   {
     onException(IOException.class)
       .handled(true)
-      .log("IOException occurred due: ${exception.message}");
+      .log(exMsg + " ${exception.message}");
     fromF("file://%s?delete=true&idempotent=true&bridgeErrorHandler=true", inBox)
       .setHeader(AWS2S3Constants.KEY, header(FileConstants.FILE_NAME))
       .to(aws2S3(s3Name + RANDOM).autoCreateBucket(true).useDefaultCredentialsProvider(true));
