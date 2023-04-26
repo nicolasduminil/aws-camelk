@@ -8,13 +8,9 @@
     <artifactId>aws-camelk</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>aws-camelk-file</artifactId>
-  <name>AWS CamelK :: The File to S3 Module</name>
+  <artifactId>aws-camelk-s3</artifactId>
+  <name>AWS CamelK :: The S3 to SQS Module</name>
   <dependencies>
-    <dependency>
-      <groupId>org.apache.camel.quarkus</groupId>
-      <artifactId>camel-quarkus-file</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-aws2-s3</artifactId>
@@ -26,10 +22,6 @@
       <plugin>
         <groupId>io.quarkus.platform</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>io.smallrye</groupId>
@@ -46,7 +38,7 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <configuration>
-              <mainClass>fr.simplex_software.quarkus.camel.integrations.file.FileToS3App</mainClass>
+              <mainClass>fr.simplex_software.quarkus.camel.integrations.s3.S3ToSqsApp</mainClass>
             </configuration>
           </plugin>
         </plugins>
