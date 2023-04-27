@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.simplex-software.fr/money-transfer" xmlns:ss="http://www.simplex-software.fr/money-transfer"
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:extensionBindingPrefixes="xjc"
+        jaxb:version="3.0" elementFormDefault="qualified">
+  <annotation>
+    <appinfo>
+      <jaxb:globalBindings>
+        <xjc:simple/>
+        <jaxb:serializable/>
+      </jaxb:globalBindings>
+    </appinfo>
+  </annotation>
+  <simpleType name="BankAccountType" final="restriction">
+    <restriction base="string">
+      <enumeration value="SAVINGS" />
+      <enumeration value="CHECKING" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="BankAddress">
+    <attribute name="streetName" type="string" />
+    <attribute name="streetNumber" type="string" />
+    <attribute name="poBox" type="string" />
+    <attribute name="cityName" type="string" />
+    <attribute name="zipCode" type="string" />
+    <attribute name="countryName" type="string" />
+  </complexType>
+
+  <complexType name="Bank">
+    <sequence>
+      <element name="bankAddresses" type="ss:BankAddress" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="bankName" type="string"/>
+  </complexType>
+
+  <complexType name="BankAccount">
+    <sequence>
+      <element name="bank" type="ss:Bank"/>
+    </sequence>
+    <attribute name="accountID" type="string" />
+    <attribute name="accountType" type="ss:BankAccountType" />
+    <attribute name="sortCode" type="string" />
+    <attribute name="accountNumber" type="string" />
+    <attribute name="transCode" type="string" />
+  </complexType>
+
+  <complexType name="MoneyTransfer">
+    <sequence>
+      <element name="reference" type="string"/>
+      <element name="sourceAccount" type="ss:BankAccount"/>
+      <element name="targetAccount" type="ss:BankAccount"/>
+      <element name="amount" type="decimal" minOccurs="1" />
+    </sequence>
+  </complexType>
+
+  <complexType name="MoneyTransfers">
+    <sequence>
+      <element name="moneyTransfer" type="ss:MoneyTransfer" maxOccurs="unbounded" minOccurs="1"/>
+    </sequence>
+  </complexType>
+
+  <element name="moneyTransfers" type="ss:MoneyTransfers"></element>
+</schema>

@@ -13,7 +13,7 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.camel</groupId>
-      <artifactId>camel-aws2-s3</artifactId>
+      <artifactId>camel-aws2-sqs</artifactId>
     </dependency>
   </dependencies>
   <build>
@@ -29,20 +29,4 @@
       </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-      <id>standalone</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <configuration>
-              <mainClass>fr.simplex_software.quarkus.camel.integrations.s3.S3ToSqsApp</mainClass>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>

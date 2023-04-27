@@ -1,5 +1,6 @@
 package fr.simplex_software.quarkus.camel.integrations.file;
 
+import org.apache.camel.*;
 import org.apache.camel.builder.*;
 import org.apache.camel.component.aws2.s3.*;
 import org.apache.camel.component.file.*;
@@ -30,8 +31,13 @@ public class FileToS3Route extends RouteBuilder
     onException(IOException.class)
       .handled(true)
       .log(exMsg + " ${exception.message}");
-    fromF("file://%s?delete=true&idempotent=true&bridgeErrorHandler=true", inBox)
-      .setHeader(AWS2S3Constants.KEY, header(FileConstants.FILE_NAME))
-      .to(aws2S3(s3Name + RANDOM).autoCreateBucket(true).useDefaultCredentialsProvider(true));
+    fromF("file://%s?include=.*.xml&delete=true&idempotent=true&bridgeErrorHandler=true", inBox)
+      .doTry()
+        .to("validator:xsd/money-transfer.xsd")
+        .setHeader(AWS2S3Constants.KEY, header(FileConstants.FILE_NAME))
+        .to(aws2S3(s3Name + RANDOM).autoCreateBucket(true).useDefaultCredentialsProvider(true))
+      .doCatch(ValidationException.class)
+        .log(LoggingLevel.ERROR, "###")
+      .end();
   }
 }

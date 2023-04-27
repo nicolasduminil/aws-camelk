@@ -20,6 +20,7 @@ public class S3ToSqsRoute extends RouteBuilder
   public void configure()
   {
     from(aws2S3(getS3BucketName()).useDefaultCredentialsProvider(true))
+      .split().tokenizeXML("moneyTransfer").streaming()
       .to(aws2Sqs(queueName).autoCreateQueue(true).useDefaultCredentialsProvider(true));
   }
 
