@@ -25,6 +25,8 @@ public class FileToS3Route extends RouteBuilder
   String s3Name;
   @ConfigProperty(name="exMsg")
   String exMsg;
+  @ConfigProperty(name="validation-failure-msg")
+  String failureMsg;
 
   public void configure() throws Exception
   {
@@ -37,7 +39,9 @@ public class FileToS3Route extends RouteBuilder
         .setHeader(AWS2S3Constants.KEY, header(FileConstants.FILE_NAME))
         .to(aws2S3(s3Name + RANDOM).autoCreateBucket(true).useDefaultCredentialsProvider(true))
       .doCatch(ValidationException.class)
-        .log(LoggingLevel.ERROR, "###")
+        .log(LoggingLevel.ERROR, failureMsg)
+      .doFinally()
+        .log(LoggingLevel.INFO, "### Done !")
       .end();
   }
 }
