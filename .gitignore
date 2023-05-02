@@ -21,3 +21,6 @@ release.properties
 
 # Plugin directory
 /.quarkus/cli/plugins/
+
+#PID files
+*.pid
