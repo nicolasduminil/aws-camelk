@@ -1,6 +1,7 @@
 package fr.simplex_software.quarkus.camel.integrations.s3;
 
 import com.amazonaws.services.s3.*;
+import com.amazonaws.services.s3.model.*;
 import io.quarkus.runtime.*;
 import io.quarkus.runtime.annotations.*;
 import org.apache.camel.main.*;
@@ -8,6 +9,7 @@ import org.eclipse.microprofile.config.inject.*;
 
 import javax.enterprise.inject.*;
 import javax.inject.*;
+import java.util.*;
 
 @QuarkusMain
 public class S3ToSqsApp implements QuarkusApplication
@@ -18,7 +20,6 @@ public class S3ToSqsApp implements QuarkusApplication
   @Inject
   S3ToSqsRoute s3ToSqsRoute;
 
-
   @Override
   public int run(String... args) throws Exception
   {
@@ -26,14 +27,5 @@ public class S3ToSqsApp implements QuarkusApplication
     main.configure().addRoutesBuilder(s3ToSqsRoute);
     main.run();
     return 0;
-  }
-
-  @Produces
-  @Named("s3BucketName")
-  public String getS3BucketName()
-  {
-    return AmazonS3ClientBuilder.standard().build().listBuckets().stream()
-      .filter(b -> b.getName().startsWith("mys3")).findFirst()
-      .orElseThrow(() -> new IllegalStateException(illegalStateExceptionMsg)).getName();
   }
 }

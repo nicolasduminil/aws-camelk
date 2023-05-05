@@ -42,6 +42,7 @@ public class TestFileToS3Route
     assertThat(buckets).isNotNull();
     assertThat(buckets.size()).isGreaterThan(0);
     assertThat(buckets.stream().anyMatch(b -> b.getName().startsWith("mys3"))).isTrue();
+
   }
 
   @Test
