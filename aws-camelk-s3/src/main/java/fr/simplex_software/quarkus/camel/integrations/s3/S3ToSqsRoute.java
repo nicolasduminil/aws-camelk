@@ -28,23 +28,19 @@ public class S3ToSqsRoute extends RouteBuilder
   String queueName;
   public String s3BucketName;
 
-  /*public S3ToSqsRoute (@Named("s3BucketName") String s3BucketName)
-  {
-    this.s3BucketName = s3BucketName;
-  }*/
   public S3ToSqsRoute ()
   {
     AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard().build();
-    List<Bucket> buckets = amazonS3.listBuckets();
+    /*List<Bucket> buckets = amazonS3.listBuckets();
     Stream<Bucket> bucketStream = buckets.stream();
     Optional<Bucket> first = bucketStream.filter(b -> b.getName().startsWith("mys3")).findFirst();
     if (first.isPresent())
       this.s3BucketName = first.get().getName();
     else
-     this.s3BucketName = amazonS3.createBucket("mys3" + RANDOM).getName();
-    /*this.s3BucketName = AmazonS3ClientBuilder.standard().build().listBuckets().stream()
+     this.s3BucketName = amazonS3.createBucket("mys3" + RANDOM).getName();*/
+    this.s3BucketName = amazonS3.listBuckets().stream()
       .filter(b -> b.getName().startsWith("mys3")).findFirst()
-      .orElse(AmazonS3ClientBuilder.standard().build().createBucket("mys3" + RANDOM)).getName();*/
+      .orElse(amazonS3.createBucket("mys3" + RANDOM)).getName();
   }
 
   @Override

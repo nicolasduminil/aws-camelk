@@ -11,6 +11,7 @@
   <modules>
     <module>aws-camelk-file</module>
     <module>aws-camelk-s3</module>
+    <module>aws-camelk-sqs</module>
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
