@@ -16,7 +16,7 @@ public class SqsToJaxRsRoute extends RouteBuilder
   @Override
   public void configure() throws Exception
   {
-    from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
-      .to
+    /*from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
+      .to*/
   }
 }
