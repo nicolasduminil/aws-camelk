@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.simplex-software.quarkus.camel.integrations</groupId>
+    <artifactId>aws-camelk</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <name>AWS CamelK :: The Model Module</name>
+  <artifactId>aws-camelk-model</artifactId>
+  <dependencies>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jaxb</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>2.5.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-value-constructor</artifactId>
+            <version>3.0</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <packageName>fr.simplex_software.quarkus.camel.integrations.jaxb</packageName>
+          <sources>
+            <source>${basedir}/src/main/resources/xsd</source>
+          </sources>
+          <arguments>
+            <argument>-Xvalue-constructor</argument>
+          </arguments>
+          <extension>true</extension>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

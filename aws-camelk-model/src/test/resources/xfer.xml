@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<moneyTransfers xmlns="http://www.simplex-software.fr/money-transfer">
+    <moneyTransfer>
+        <reference>Tech Repairs</reference>
+        <sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+            <bank bankName="Société Générale">
+                <bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+            </bank>
+        </sourceAccount>
+        <targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+            <bank bankName="ING">
+                <bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+            </bank>
+        </targetAccount>
+        <amount>1000.00</amount>
+    </moneyTransfer>
+    <moneyTransfer>
+        <reference>Taxes and Licences</reference>
+        <sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+            <bank bankName="Société Générale">
+                <bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+            </bank>
+        </sourceAccount>
+        <targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+            <bank bankName="ING">
+                <bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+            </bank>
+        </targetAccount>
+        <amount>800.00</amount>
+    </moneyTransfer>
+    <moneyTransfer>
+        <reference>Advertising</reference>
+        <sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+            <bank bankName="Société Générale">
+                <bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+            </bank>
+        </sourceAccount>
+        <targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+            <bank bankName="ING">
+                <bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+            </bank>
+        </targetAccount>
+        <amount>1234.00</amount>
+    </moneyTransfer>
+    <moneyTransfer>
+        <reference>Meal and Entertainment</reference>
+        <sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+            <bank bankName="Société Générale">
+                <bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+            </bank>
+        </sourceAccount>
+        <targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+            <bank bankName="ING">
+                <bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+            </bank>
+        </targetAccount>
+        <amount>2000.00</amount>
+    </moneyTransfer>
+    <moneyTransfer>
+        <reference>Other expanses</reference>
+        <sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+            <bank bankName="Société Générale">
+                <bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+            </bank>
+        </sourceAccount>
+        <targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+            <bank bankName="ING">
+                <bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+            </bank>
+        </targetAccount>
+        <amount>1500.00</amount>
+    </moneyTransfer>
+</moneyTransfers>

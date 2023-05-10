@@ -1,0 +1,72 @@
+<mon:moneyTransfers xmlns:mon="http://www.simplex-software.fr/money-transfer">
+  <mon:moneyTransfer>
+    <mon:reference>Tech Repairs</mon:reference>
+    <mon:sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+      <mon:bank bankName="Société Générale">
+        <mon:bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+      </mon:bank>
+    </mon:sourceAccount>
+    <mon:targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+      <mon:bank bankName="ING">
+        <mon:bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+      </mon:bank>
+    </mon:targetAccount>
+    <mon:amount>1000.00</mon:amount>
+  </mon:moneyTransfer>
+  <mon:moneyTransfer>
+    <mon:reference>Taxes and Licences</mon:reference>
+    <mon:sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+      <mon:bank bankName="Société Générale">
+        <mon:bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+      </mon:bank>
+    </mon:sourceAccount>
+    <mon:targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+      <mon:bank bankName="ING">
+        <mon:bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+      </mon:bank>
+    </mon:targetAccount>
+    <mon:amount>800.00</mon:amount>
+  </mon:moneyTransfer>
+  <mon:moneyTransfer>
+    <mon:reference>Advertising</mon:reference>
+    <mon:sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+      <mon:bank bankName="Société Générale">
+        <mon:bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+      </mon:bank>
+    </mon:sourceAccount>
+    <mon:targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+      <mon:bank bankName="ING">
+        <mon:bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+      </mon:bank>
+    </mon:targetAccount>
+    <mon:amount>1234.00</mon:amount>
+  </mon:moneyTransfer>
+  <mon:moneyTransfer>
+    <mon:reference>Meal and Entertainment</mon:reference>
+    <mon:sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+      <mon:bank bankName="Société Générale">
+        <mon:bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+      </mon:bank>
+    </mon:sourceAccount>
+    <mon:targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+      <mon:bank bankName="ING">
+        <mon:bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+      </mon:bank>
+    </mon:targetAccount>
+    <mon:amount>2000.00</mon:amount>
+  </mon:moneyTransfer>
+  <mon:moneyTransfer>
+    <mon:reference>Other expanses</mon:reference>
+    <mon:sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
+      <mon:bank bankName="Société Générale">
+        <mon:bankAddresses streetName="av. de Paris" streetNumber="18" poBox="Cedex" cityName="Montmorency" zipCode="95800" countryName="France"/>
+      </mon:bank>
+    </mon:sourceAccount>
+    <mon:targetAccount accountID="ING01" accountType="SAVINGS" sortCode="08080" accountNumber="425091789" transCode="7BRE0">
+      <mon:bank bankName="ING">
+        <mon:bankAddresses streetName="blvd. Waterloo" streetNumber="381" poBox="INGPOBOX" cityName="Waterloo" zipCode="B1000" countryName="Belgium"/>
+      </mon:bank>
+    </mon:targetAccount>
+    <mon:amount>1500.00</mon:amount>
+  </mon:moneyTransfer>
+</mon:moneyTransfers>

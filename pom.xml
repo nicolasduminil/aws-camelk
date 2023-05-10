@@ -9,6 +9,7 @@
   <packaging>pom</packaging>
   <name>AWS CamelK the Master POM</name>
   <modules>
+    <module>aws-camelk-model</module>
     <module>aws-camelk-file</module>
     <module>aws-camelk-s3</module>
     <module>aws-camelk-sqs</module>
