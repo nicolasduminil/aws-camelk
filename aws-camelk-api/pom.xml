@@ -9,6 +9,7 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>aws-camelk-api</artifactId>
+  <name>AWS CamelK :: The API Module</name>
   <dependencies>
     <dependency>
       <groupId>fr.simplex-software.quarkus.camel.integrations</groupId>

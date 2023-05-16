@@ -42,7 +42,7 @@ public class MoneyTransferResource
   }
 
   @GET
-  @Produces(APPLICATION_JSON)
+  @Produces(APPLICATION_XML)
   @Operation(description = "Get the money transfer orders list")
   @APIResponse(responseCode = "404", description = "No money transfer orders found",
     content = @Content(mediaType = APPLICATION_JSON))
@@ -59,7 +59,7 @@ public class MoneyTransferResource
 
   @GET
   @Path("{ref}")
-  @Consumes(APPLICATION_JSON)
+  @Consumes(APPLICATION_XML)
   @Produces(APPLICATION_JSON)
   @Operation(description = "Get the money transfer order identified by reference")
   @APIResponse(responseCode = "404", description = "No such a money transfer order found",
@@ -73,10 +73,10 @@ public class MoneyTransferResource
   }
 
   @POST
-  @Consumes(APPLICATION_JSON)
+  @Consumes(APPLICATION_XML)
   @Operation(description = "Create a new money transfer order")
   @APIResponse(responseCode = "500", description = "An internal server error has occurred",
-    content = @Content(mediaType = APPLICATION_JSON))
+    content = @Content(mediaType = APPLICATION_XML))
   @APIResponseSchema(value = MoneyTransfer.class, responseDescription = "The new money transfer order has been created", responseCode = "201")
   @Metered(name = "Create money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the createMoneyTransferOrder endpoint invocations", absolute = true)
   @Timeout(250)
@@ -91,7 +91,7 @@ public class MoneyTransferResource
 
   @PUT
   @Path("{ref}")
-  @Consumes(APPLICATION_JSON)
+  @Consumes(APPLICATION_XML)
   @Operation(description = "Update a money transfer order")
   @APIResponse(responseCode = "404", description = "The money transfer order does not exist",
     content = @Content(mediaType = APPLICATION_JSON))
@@ -106,7 +106,7 @@ public class MoneyTransferResource
 
   @DELETE
   @Path("{ref}")
-  @Consumes(APPLICATION_JSON)
+  @Consumes(APPLICATION_XML)
   @Operation(description = "Delete a money transfer order")
   @APIResponse(responseCode = "404", description = "The money transfer order does not exist",
     content = @Content(mediaType = APPLICATION_JSON))

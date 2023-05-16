@@ -11,17 +11,13 @@
   <artifactId>aws-camelk-sqs</artifactId>
   <name>AWS CamelK :: The SQS to REST Module</name>
   <dependencies>
-    <!--dependency>
-      <groupId>org.apache.camel.quarkus</groupId>
-      <artifactId>camel-quarkus-rest</artifactId>
-    </dependency-->
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-aws2-sqs</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
-      <artifactId>camel-quarkus-platform-http</artifactId>
+      <artifactId>camel-quarkus-http</artifactId>
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
