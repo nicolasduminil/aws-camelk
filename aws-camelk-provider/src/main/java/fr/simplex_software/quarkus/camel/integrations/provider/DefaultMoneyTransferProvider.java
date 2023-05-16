@@ -1,5 +1,6 @@
 package fr.simplex_software.quarkus.camel.integrations.provider;
 
+import fr.simplex_software.quarkus.camel.integrations.api.*;
 import fr.simplex_software.quarkus.camel.integrations.jaxb.*;
 
 import javax.enterprise.context.*;

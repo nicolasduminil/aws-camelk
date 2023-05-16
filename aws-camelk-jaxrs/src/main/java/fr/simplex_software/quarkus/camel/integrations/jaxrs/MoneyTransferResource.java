@@ -1,7 +1,7 @@
 package fr.simplex_software.quarkus.camel.integrations.jaxrs;
 
+import fr.simplex_software.quarkus.camel.integrations.api.*;
 import fr.simplex_software.quarkus.camel.integrations.jaxb.*;
-import fr.simplex_software.quarkus.camel.integrations.provider.*;
 import org.eclipse.microprofile.faulttolerance.*;
 import org.eclipse.microprofile.faulttolerance.exceptions.*;
 import org.eclipse.microprofile.metrics.*;
@@ -14,13 +14,12 @@ import javax.enterprise.context.*;
 import javax.inject.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-
 import java.util.*;
 
 import static javax.ws.rs.core.MediaType.*;
 
+@ApplicationScoped
 @Path("xfer")
-@RequestScoped
 public class MoneyTransferResource
 {
   @Inject
@@ -52,7 +51,9 @@ public class MoneyTransferResource
   @Timeout(250)
   public Response getMoneyTransferOrders()
   {
-    GenericEntity<List<MoneyTransfer>> orders = new GenericEntity<>(moneyTransferFacade.getMoneyTransferOrders()){};
+    GenericEntity<List<MoneyTransfer>> orders = new GenericEntity<>(moneyTransferFacade.getMoneyTransferOrders())
+    {
+    };
     return Response.ok().entity(orders).build();
   }
 
@@ -64,7 +65,7 @@ public class MoneyTransferResource
   @APIResponse(responseCode = "404", description = "No such a money transfer order found",
     content = @Content(mediaType = APPLICATION_JSON))
   @APIResponseSchema(value = MoneyTransfer.class, responseDescription = "Money transfer order found", responseCode = "200")
-  @Metered (name = "Get money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the getMoneyTransferOrder endpoint invocations", absolute = true)
+  @Metered(name = "Get money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the getMoneyTransferOrder endpoint invocations", absolute = true)
   @Fallback(fallbackMethod = "fallbackOfGetMoneyTransferOrder")
   public Response getMoneyTransferOrder(@PathParam("ref") String reference)
   {
@@ -77,9 +78,9 @@ public class MoneyTransferResource
   @APIResponse(responseCode = "500", description = "An internal server error has occurred",
     content = @Content(mediaType = APPLICATION_JSON))
   @APIResponseSchema(value = MoneyTransfer.class, responseDescription = "The new money transfer order has been created", responseCode = "201")
-  @Metered (name = "Create money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the createMoneyTransferOrder endpoint invocations", absolute = true)
+  @Metered(name = "Create money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the createMoneyTransferOrder endpoint invocations", absolute = true)
   @Timeout(250)
-  @Retry (retryOn = TimeoutException.class, maxRetries = 2)
+  @Retry(retryOn = TimeoutException.class, maxRetries = 2)
   public Response createMoneyTransferOrder(MoneyTransfer moneyTransfer, @Context UriInfo uriInfo)
   {
     String ref = moneyTransferFacade.createMoneyTransferOrder(moneyTransfer);
@@ -95,8 +96,8 @@ public class MoneyTransferResource
   @APIResponse(responseCode = "404", description = "The money transfer order does not exist",
     content = @Content(mediaType = APPLICATION_JSON))
   @APIResponseSchema(value = MoneyTransfer.class, responseDescription = "The Money transfer orderhas been updated", responseCode = "200")
-  @Metered (name = "Update a money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the updateMoneyTransferOrder endpoint invocations", absolute = true)
-  @CircuitBreaker (successThreshold = 5, requestVolumeThreshold = 4, failureRatio = 0.75, delay = 1000)
+  @Metered(name = "Update a money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the updateMoneyTransferOrder endpoint invocations", absolute = true)
+  @CircuitBreaker(successThreshold = 5, requestVolumeThreshold = 4, failureRatio = 0.75, delay = 1000)
   public Response updateMoneyTransferOrder(@PathParam("ref") String ref, MoneyTransfer moneyTransfer)
   {
     Long id = moneyTransferFacade.updateMoneyTransferOrder(ref, moneyTransfer);
@@ -110,7 +111,7 @@ public class MoneyTransferResource
   @APIResponse(responseCode = "404", description = "The money transfer order does not exist",
     content = @Content(mediaType = APPLICATION_JSON))
   @APIResponseSchema(value = MoneyTransfer.class, responseDescription = "The money transfer order has been deleted", responseCode = "200")
-  @Metered (name = "Delete a money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the deleteMoneyTransferOrders endpoint invocations", absolute = true)
+  @Metered(name = "Delete a money transfer order", unit = MetricUnits.MINUTES, description = "Metric to monitor the frequency of the deleteMoneyTransferOrders endpoint invocations", absolute = true)
   public Response deleteMoneyTransferOrder(@PathParam("ref") String reference)
   {
     moneyTransferFacade.deleteMoneyTransferOrder(reference);
