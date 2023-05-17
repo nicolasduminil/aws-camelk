@@ -20,7 +20,8 @@ public class SqsToJaxRsRoute extends RouteBuilder
   public void configure() throws Exception
   {
     from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
-      .setHeader(Exchange.HTTP_METHOD, constant("POST"))
-      .to(http(uri));
+      .log(LoggingLevel.INFO, "*** Sending: ${body}")
+      /*.setHeader(Exchange.HTTP_METHOD, constant("POST"))
+      .to(http(uri))*/;
   }
 }

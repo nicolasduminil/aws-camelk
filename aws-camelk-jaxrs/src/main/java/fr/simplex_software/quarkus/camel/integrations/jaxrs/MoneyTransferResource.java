@@ -51,10 +51,13 @@ public class MoneyTransferResource
   @Timeout(250)
   public Response getMoneyTransferOrders()
   {
-    GenericEntity<List<MoneyTransfer>> orders = new GenericEntity<>(moneyTransferFacade.getMoneyTransferOrders())
+    System.out.println ("### getMoneyTransferOrders()");
+    /*GenericEntity<List<MoneyTransfer>> orders = new GenericEntity<>(moneyTransferFacade.getMoneyTransferOrders())
     {
-    };
-    return Response.ok().entity(orders).build();
+    };*/
+    List<MoneyTransfer> moneyTransferList = moneyTransferFacade.getMoneyTransferOrders().getMoneyTransfers();
+    moneyTransferList.forEach(mt -> System.out.println ("### Ref: " + mt.getReference()));
+    return Response.ok().entity(new MoneyTransfers(moneyTransferList)).build();
   }
 
   @GET
