@@ -97,7 +97,7 @@ public class MoneyTransferResource
   @CircuitBreaker(successThreshold = 5, requestVolumeThreshold = 4, failureRatio = 0.75, delay = 1000)
   public Response updateMoneyTransferOrder(@PathParam("ref") String ref, MoneyTransfer moneyTransfer)
   {
-    Long id = moneyTransferFacade.updateMoneyTransferOrder(ref, moneyTransfer);
+    moneyTransferFacade.updateMoneyTransferOrder(ref, moneyTransfer);
     return Response.accepted().build();
   }
 

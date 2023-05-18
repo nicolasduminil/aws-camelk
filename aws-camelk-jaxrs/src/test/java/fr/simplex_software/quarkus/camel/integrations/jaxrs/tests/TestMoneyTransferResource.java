@@ -9,6 +9,7 @@ import io.restassured.http.*;
 import io.restassured.mapper.*;
 import io.restassured.response.*;
 import io.restassured.specification.*;
+import org.jboss.resteasy.reactive.*;
 import org.junit.jupiter.api.*;
 
 import java.math.*;
@@ -74,7 +75,7 @@ public class TestMoneyTransferResource
       .body(moneyTransfer, ObjectMapperType.JSONB)
       .post()
       .then()
-      .statusCode(201)
+      .statusCode(RestResponse.StatusCode.CREATED)
       .body(is(notNullValue()));
   }
 
@@ -83,10 +84,10 @@ public class TestMoneyTransferResource
   public void testGetMoneyTransferOrdersEndpoint()
   {
     Response response = requestSpecification.when()
-      .contentType(ContentType.XML)
+      //.contentType(ContentType.XML)
       .get()
       .then()
-      .statusCode(200)
+      .statusCode(RestResponse.StatusCode.OK)
       .extract().response();
     assertThat(response).isNotNull();
     List<MoneyTransfer> moneyTransfers = response.as(new TypeRef<List<MoneyTransfer>>() {});
@@ -103,15 +104,51 @@ public class TestMoneyTransferResource
   public void testGetMoneyTransferOrderEndpoint()
   {
     Response response = requestSpecification.when()
-      .contentType(ContentType.XML)
+      //.contentType(ContentType.XML)
       .pathParam("ref", "reference")
       .get("{ref}")
       .then()
-      .statusCode(200)
+      .statusCode(RestResponse.StatusCode.OK)
       .extract().response();
     assertThat(response).isNotNull();
     MoneyTransfer moneyTransfer = response.as(MoneyTransfer.class);
     assertThat(moneyTransfer).isNotNull();
     assertThat(moneyTransfer.getReference()).isEqualTo("reference");
+  }
+
+  @Test
+  @Order(60)
+  public void testUpdateMoneyTransferOrderEndpoint()
+  {
+    MoneyTransfer moneyTransfer = new MoneyTransfer("reference",
+      new BankAccount(new Bank(Arrays.asList(new BankAddress("rue de Paris", "24",
+        "BP 100", "Soisy sous Montmorency", "95230", "France")),
+        "Société Générale"), "accountId", BankAccountType.CHECKING, "sortCode",
+        "accountNumber", "transCode"),
+      new BankAccount(new Bank(Arrays.asList(new BankAddress("Argyle Street", "201",
+        "PO 258", "Glasgow", "G2 8BU", "UK")),
+        "Bank of Scotland"), "accountId2", BankAccountType.CHECKING, "sortCode2",
+        "accountNumber2", "transCode2"),
+      new BigDecimal(500.00));
+    requestSpecification.when()
+      .contentType(ContentType.JSON)
+      .body(moneyTransfer, ObjectMapperType.JSONB)
+      .pathParam("ref", "reference")
+      .put("{ref}")
+      .then()
+      .statusCode(RestResponse.StatusCode.ACCEPTED)
+      .body(is(notNullValue()));
+  }
+
+  @Test
+  public void testDeleteMoneyTransferOrderEndpoint()
+  {
+    requestSpecification.when()
+      //.contentType(ContentType.JSON)
+      .pathParam("ref", "reference")
+      .delete("{ref}")
+      .then()
+      .statusCode(RestResponse.StatusCode.OK)
+      .body(is(notNullValue()));
   }
 }
