@@ -20,8 +20,16 @@
       <artifactId>camel-quarkus-http</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.apache.camel.quarkus</groupId>
+      <artifactId>camel-quarkus-jaxb</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-sqs</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>fr.simplex-software.quarkus.camel.integrations</groupId>
+      <artifactId>aws-camelk-model</artifactId>
     </dependency>
   </dependencies>
   <build>

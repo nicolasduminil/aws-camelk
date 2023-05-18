@@ -84,7 +84,6 @@ public class TestMoneyTransferResource
   public void testGetMoneyTransferOrdersEndpoint()
   {
     Response response = requestSpecification.when()
-      //.contentType(ContentType.XML)
       .get()
       .then()
       .statusCode(RestResponse.StatusCode.OK)
@@ -104,7 +103,6 @@ public class TestMoneyTransferResource
   public void testGetMoneyTransferOrderEndpoint()
   {
     Response response = requestSpecification.when()
-      //.contentType(ContentType.XML)
       .pathParam("ref", "reference")
       .get("{ref}")
       .then()
@@ -144,7 +142,6 @@ public class TestMoneyTransferResource
   public void testDeleteMoneyTransferOrderEndpoint()
   {
     requestSpecification.when()
-      //.contentType(ContentType.JSON)
       .pathParam("ref", "reference")
       .delete("{ref}")
       .then()
