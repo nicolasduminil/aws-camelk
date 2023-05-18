@@ -4,9 +4,9 @@ import fr.simplex_software.quarkus.camel.integrations.jaxb.*;
 import fr.simplex_software.quarkus.camel.integrations.jaxrs.*;
 import io.quarkus.test.common.http.*;
 import io.quarkus.test.junit.*;
-import io.restassured.*;
 import io.restassured.common.mapper.*;
 import io.restassured.http.*;
+import io.restassured.mapper.*;
 import io.restassured.response.*;
 import io.restassured.specification.*;
 import org.junit.jupiter.api.*;
@@ -70,8 +70,8 @@ public class TestMoneyTransferResource
         "accountNumber2", "transCode2"),
       new BigDecimal(100.00));
     requestSpecification.when()
-      .contentType(ContentType.XML)
-      .body(moneyTransfer)
+      .contentType(ContentType.JSON)
+      .body(moneyTransfer, ObjectMapperType.JSONB)
       .post()
       .then()
       .statusCode(201)
@@ -89,12 +89,12 @@ public class TestMoneyTransferResource
       .statusCode(200)
       .extract().response();
     assertThat(response).isNotNull();
-    MoneyTransfers moneyTransfers = response.as(MoneyTransfers.class);
+    List<MoneyTransfer> moneyTransfers = response.as(new TypeRef<List<MoneyTransfer>>() {});
     assertThat(moneyTransfers).isNotNull();
-    List<MoneyTransfer> moneyTransferList = moneyTransfers.getMoneyTransfers();
-    assertThat(moneyTransferList).isNotNull();
-    assertThat(moneyTransferList).hasSize(1);
-    MoneyTransfer moneyTransfer = moneyTransferList.get(0);
+     assertThat(moneyTransfers).isNotNull();
+    assertThat(moneyTransfers).hasSize(1);
+    MoneyTransfer moneyTransfer = moneyTransfers.get(0);
+    assertThat(moneyTransfer).isNotNull();
     assertThat(moneyTransfer.getReference()).isEqualTo("reference");
   }
 
@@ -104,7 +104,7 @@ public class TestMoneyTransferResource
   {
     Response response = requestSpecification.when()
       .contentType(ContentType.XML)
-      .param("ref", "reference")
+      .pathParam("ref", "reference")
       .get("{ref}")
       .then()
       .statusCode(200)

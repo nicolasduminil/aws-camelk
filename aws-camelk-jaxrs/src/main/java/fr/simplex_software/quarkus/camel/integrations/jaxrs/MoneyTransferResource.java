@@ -42,7 +42,7 @@ public class MoneyTransferResource
   }
 
   @GET
-  @Produces(APPLICATION_XML)
+  @Produces(APPLICATION_JSON)
   @Operation(description = "Get the money transfer orders list")
   @APIResponse(responseCode = "404", description = "No money transfer orders found",
     content = @Content(mediaType = APPLICATION_JSON))
@@ -51,18 +51,12 @@ public class MoneyTransferResource
   @Timeout(250)
   public Response getMoneyTransferOrders()
   {
-    System.out.println ("### getMoneyTransferOrders()");
-    /*GenericEntity<List<MoneyTransfer>> orders = new GenericEntity<>(moneyTransferFacade.getMoneyTransferOrders())
-    {
-    };*/
-    List<MoneyTransfer> moneyTransferList = moneyTransferFacade.getMoneyTransferOrders().getMoneyTransfers();
-    moneyTransferList.forEach(mt -> System.out.println ("### Ref: " + mt.getReference()));
-    return Response.ok().entity(new MoneyTransfers(moneyTransferList)).build();
+    GenericEntity<List<MoneyTransfer>> listGenericEntity = new GenericEntity<>(moneyTransferFacade.getMoneyTransferOrders()) {};
+    return Response.ok().entity(listGenericEntity).build();
   }
 
   @GET
   @Path("{ref}")
-  @Consumes(APPLICATION_XML)
   @Produces(APPLICATION_JSON)
   @Operation(description = "Get the money transfer order identified by reference")
   @APIResponse(responseCode = "404", description = "No such a money transfer order found",
@@ -76,7 +70,7 @@ public class MoneyTransferResource
   }
 
   @POST
-  @Consumes(APPLICATION_XML)
+  @Consumes(APPLICATION_JSON)
   @Operation(description = "Create a new money transfer order")
   @APIResponse(responseCode = "500", description = "An internal server error has occurred",
     content = @Content(mediaType = APPLICATION_XML))
@@ -94,7 +88,7 @@ public class MoneyTransferResource
 
   @PUT
   @Path("{ref}")
-  @Consumes(APPLICATION_XML)
+  @Consumes(APPLICATION_JSON)
   @Operation(description = "Update a money transfer order")
   @APIResponse(responseCode = "404", description = "The money transfer order does not exist",
     content = @Content(mediaType = APPLICATION_JSON))
@@ -109,7 +103,6 @@ public class MoneyTransferResource
 
   @DELETE
   @Path("{ref}")
-  @Consumes(APPLICATION_XML)
   @Operation(description = "Delete a money transfer order")
   @APIResponse(responseCode = "404", description = "The money transfer order does not exist",
     content = @Content(mediaType = APPLICATION_JSON))

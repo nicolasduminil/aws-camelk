@@ -14,19 +14,9 @@ public class DefaultMoneyTransferProvider implements MoneyTransferFacade
   private Map<String, MoneyTransfer> moneyTransferMap = new ConcurrentHashMap<>();
 
   @Override
-  public MoneyTransfers getMoneyTransferOrders()
+  public List<MoneyTransfer> getMoneyTransferOrders()
   {
-    System.out.println ("$$$ getMoneyTransferOrders()");
-    Set<Map.Entry<String, MoneyTransfer>> entries = moneyTransferMap.entrySet();
-    if (entries.isEmpty())
-      System.out.println ("$$$ Entrie is empty");
-    else
-      System.out.println ("$$$ Entrie is not empty");
-    entries.forEach(e -> System.out.println ("$$$ Entry: " + e.getKey() + "->" + e.getValue()));
-    List<MoneyTransfer> moneyTransferList = entries.stream().map(es -> es.getValue()).collect(Collectors.toList());
-    moneyTransferList.forEach(mt -> System.out.println ("$$$ Mt: " + mt.getReference()));
-    return new MoneyTransfers(moneyTransferList);
-    //return new MoneyTransfers(moneyTransferMap.entrySet().stream().map(es -> es.getValue()).collect(Collectors.toList()));
+    return moneyTransferMap.entrySet().stream().map(es -> es.getValue()).collect(Collectors.toList());
   }
 
   @Override

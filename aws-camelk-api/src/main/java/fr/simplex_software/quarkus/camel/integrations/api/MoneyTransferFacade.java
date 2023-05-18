@@ -7,7 +7,7 @@ import java.util.*;
 
 public interface MoneyTransferFacade extends Serializable
 {
-  MoneyTransfers getMoneyTransferOrders();
+  List<MoneyTransfer> getMoneyTransferOrders();
   Optional<MoneyTransfer> getMoneyTransferOrder(String reference);
   String createMoneyTransferOrder(MoneyTransfer moneyTransfer);
   Long updateMoneyTransferOrder(String ref, MoneyTransfer moneyTransfer);
