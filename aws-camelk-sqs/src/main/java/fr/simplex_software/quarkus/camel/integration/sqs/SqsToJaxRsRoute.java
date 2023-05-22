@@ -24,26 +24,16 @@ public class SqsToJaxRsRoute extends RouteBuilder
   @ConfigProperty(name="rest-uri")
   String uri;
   private JaxbDataFormat jaxbDataFormat = new JaxbDataFormat(true);
-  private Map<String, String> namespaceRef = Map.of("http://www.simplex-software.fr/money-transfer", "mon");
 
-  /*@PostConstruct
+  @PostConstruct
   public void postConstruct()
   {
     jaxbDataFormat.setContextPath(MoneyTransfer.class.getPackageName());
-    if (getCamelContext() == null)
-      System.out.println ("### Camel context is null");
-    Registry registry = getCamelContext().getRegistry();
-    if (registry == null)
-      System.out.println ("### Registry is null");
-    if (namespaceRef == null)
-      System.out.println ("### namespaceRef is null");
-  }*/
+  }
 
   @Override
   public void configure() throws Exception
   {
-    this.getCamelContext().getRegistry().bind("namespaceRef", namespaceRef);
-    jaxbDataFormat.setNamespacePrefixRef("namespaceRef");
     from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
       .log(LoggingLevel.INFO, "*** Sending: ${body}")
       .unmarshal(jaxbDataFormat)

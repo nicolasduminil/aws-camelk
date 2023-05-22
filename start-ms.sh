@@ -1,4 +1,6 @@
 #!/bin/sh
+./delete-all-buckets.sh
+./create-queue.sh
 java -jar ./aws-camelk-file/target/quarkus-app/quarkus-run.jar &
 sleep 3
 java -jar ./aws-camelk-s3/target/quarkus-app/quarkus-run.jar &
