@@ -14,7 +14,7 @@ public class TestJaxbModel
   @Test
   public void testUnmarshalMoneyTransfersFile() throws JAXBException
   {
-    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/test/resources/money-transfers.xml"));
+    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/main/resources/xml/money-transfers.xml"));
     assertThat(moneyTransfers).isNotNull();
     List<MoneyTransfer> moneyTransferList = moneyTransfers.getMoneyTransfers();
     assertThat(moneyTransferList).isNotNull();
@@ -27,7 +27,7 @@ public class TestJaxbModel
   @Test
   public void testUnmarshalMoneyTransferFile() throws JAXBException
   {
-    MoneyTransfer moneyTransfer = (MoneyTransfer) unmarshalXmlFile(new File("src/test/resources/money-transfer.xml"));
+    MoneyTransfer moneyTransfer = (MoneyTransfer) unmarshalXmlFile(new File("src/main/resources/xml/money-transfer.xml"));
     assertThat(moneyTransfer).isNotNull();
     assertThat(moneyTransfer.getReference()).isEqualTo("Tech Repairs");
     assertThat(moneyTransfer.getSourceAccount().getAccountID()).isEqualTo("SG01");
@@ -36,18 +36,18 @@ public class TestJaxbModel
   @Test
   public void testMarshalMoneyTransfers() throws JAXBException
   {
-    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/test/resources/money-transfers.xml"));
+    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/main/resources/xml/money-transfers.xml"));
     assertThat(moneyTransfers).isNotNull();
     List<MoneyTransfer> moneyTransferList = moneyTransfers.getMoneyTransfers();
-    assertThat(marshalMoneyTransfersToXmlFile(moneyTransfers, new File ("src/test/resources/xfer.xml"))).exists();
+    assertThat(marshalMoneyTransfersToXmlFile(moneyTransfers, new File ("target/xfer.xml"))).exists();
   }
 
   @Test
   public void testMarshalMoneyTransfer() throws JAXBException
   {
-    MoneyTransfer moneyTransfer = (MoneyTransfer) unmarshalXmlFile(new File("src/test/resources/money-transfer.xml"));
+    MoneyTransfer moneyTransfer = (MoneyTransfer) unmarshalXmlFile(new File("src/main/resources/xml/money-transfer.xml"));
     assertThat(moneyTransfer).isNotNull();
-    assertThat(marshalMoneyTransfersToXmlFile(moneyTransfer, new File ("src/test/resources/xfer2.xml"))).exists();
+    assertThat(marshalMoneyTransfersToXmlFile(moneyTransfer, new File ("target/xfer2.xml"))).exists();
   }
 
 

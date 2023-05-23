@@ -1,2 +1,2 @@
 #!/bin/sh
-cp aws-camelk-file/src/main/resources/xml/xfer.xml tmp/input
+cp aws-camelk-model/src/main/resources/xml/money-transfers.xml tmp/input

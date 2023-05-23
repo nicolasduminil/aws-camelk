@@ -1,4 +1,6 @@
-<mon:moneyTransfer xmlns:mon="http://www.simplex-software.fr/money-transfer">
+<mon:moneyTransfer xmlns:mon="http://www.simplex-software.fr/money-transfer"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.simplex-software.fr/money-transfer ../xsd/money-transfer.xsd">
   <mon:reference>Tech Repairs</mon:reference>
   <mon:sourceAccount accountID="SG01" accountType="CHECKING" sortCode="04004" accountNumber="00050525712" transCode="03000">
     <mon:bank bankName="Société Générale">
