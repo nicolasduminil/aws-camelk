@@ -1,18 +1,13 @@
-package fr.simplex_software.quarkus.camel.integration.sqs;
+package fr.simplex_software.quarkus.camel.integrations.sqs;
 
 import fr.simplex_software.quarkus.camel.integrations.jaxb.*;
 import org.apache.camel.*;
 import org.apache.camel.builder.*;
 import org.apache.camel.model.dataformat.*;
-import org.apache.camel.spi.*;
 import org.eclipse.microprofile.config.inject.*;
 
 import javax.annotation.*;
 import javax.enterprise.context.*;
-import javax.enterprise.inject.*;
-import javax.inject.*;
-
-import java.util.*;
 
 import static org.apache.camel.builder.endpoint.StaticEndpointBuilders.*;
 
@@ -29,6 +24,7 @@ public class SqsToJaxRsRoute extends RouteBuilder
   public void postConstruct()
   {
     jaxbDataFormat.setContextPath(MoneyTransfer.class.getPackageName());
+    jaxbDataFormat.setPartClass(MoneyTransfer.class.getName());
   }
 
   @Override
@@ -36,9 +32,12 @@ public class SqsToJaxRsRoute extends RouteBuilder
   {
     from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
       .log(LoggingLevel.INFO, "*** Sending: ${body}")
-      .unmarshal(jaxbDataFormat)
-      .log (LoggingLevel.INFO, "*** Have unmarshalled: ${body}")
-      /*.setHeader(Exchange.HTTP_METHOD, constant("POST"))
-      .to(http(uri))*/;
+      .bean(UnmarshalXmlFragment.class)
+      //.unmarshal(jaxbDataFormat)
+      .log (LoggingLevel.INFO, "*** Have unmarshalled from XML to Object: ${body.reference}, ${body.amount}")
+      .marshal().json(JsonLibrary.Jsonb)
+      .log (LoggingLevel.INFO, "*** Have marshalled from Object to JSON: ${body}")
+      .setHeader(Exchange.HTTP_METHOD, constant("POST"))
+      .to(http(uri));
   }
 }

@@ -7,8 +7,8 @@ java -jar ./aws-camelk-s3/target/quarkus-app/quarkus-run.jar &
 sleep 3
 ./copy-xml-file.sh
 sleep 3
-#java -jar ./aws-camelk-jaxrs/target/quarkus-app/quarkus-run.jar &
-#sleep 3
+java -jar ./aws-camelk-jaxrs/target/quarkus-app/quarkus-run.jar &
+sleep 3
 java -jar ./aws-camelk-sqs/target/quarkus-app/quarkus-run.jar &
 sleep 3
 ps ef | grep -i aws-camelk-file | grep -v grep | awk {'print $1'} > pid-aws-camelk-file.pid

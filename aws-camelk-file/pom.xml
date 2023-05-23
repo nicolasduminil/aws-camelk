@@ -23,6 +23,10 @@
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-validator</artifactId>
     </dependency>
+    <dependency>
+      <groupId>fr.simplex-software.quarkus.camel.integrations</groupId>
+      <artifactId>aws-camelk-model</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>

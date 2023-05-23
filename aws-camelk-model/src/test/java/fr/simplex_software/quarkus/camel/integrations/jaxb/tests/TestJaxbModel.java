@@ -1,6 +1,6 @@
 package fr.simplex_software.quarkus.camel.integrations.jaxb.tests;
-import fr.simplex_software.quarkus.camel.integrations.jaxb.*;
 
+import fr.simplex_software.quarkus.camel.integrations.jaxb.*;
 import org.junit.jupiter.api.*;
 
 import javax.xml.bind.*;
@@ -12,9 +12,9 @@ import static org.assertj.core.api.Assertions.*;
 public class TestJaxbModel
 {
   @Test
-  public void testUnmarshalMoneyTransferFile()
+  public void testUnmarshalMoneyTransfersFile() throws JAXBException
   {
-    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/test/resources/money-transfer.xml"));
+    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/test/resources/money-transfers.xml"));
     assertThat(moneyTransfers).isNotNull();
     List<MoneyTransfer> moneyTransferList = moneyTransfers.getMoneyTransfers();
     assertThat(moneyTransferList).isNotNull();
@@ -25,28 +25,37 @@ public class TestJaxbModel
   }
 
   @Test
-  public void testMarshalMoneyTransfers()
+  public void testUnmarshalMoneyTransferFile() throws JAXBException
   {
-    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/test/resources/money-transfer.xml"));
+    MoneyTransfer moneyTransfer = (MoneyTransfer) unmarshalXmlFile(new File("src/test/resources/money-transfer.xml"));
+    assertThat(moneyTransfer).isNotNull();
+    assertThat(moneyTransfer.getReference()).isEqualTo("Tech Repairs");
+    assertThat(moneyTransfer.getSourceAccount().getAccountID()).isEqualTo("SG01");
+  }
+
+  @Test
+  public void testMarshalMoneyTransfers() throws JAXBException
+  {
+    MoneyTransfers moneyTransfers = (MoneyTransfers) unmarshalXmlFile(new File("src/test/resources/money-transfers.xml"));
     assertThat(moneyTransfers).isNotNull();
     List<MoneyTransfer> moneyTransferList = moneyTransfers.getMoneyTransfers();
     assertThat(marshalMoneyTransfersToXmlFile(moneyTransfers, new File ("src/test/resources/xfer.xml"))).exists();
   }
 
-  private Object unmarshalXmlFile (File xml)
+  @Test
+  public void testMarshalMoneyTransfer() throws JAXBException
   {
-    Object moneyTransfers = null;
-    try
-    {
-      Unmarshaller unmarshaller = JAXBContext.newInstance(MoneyTransfers.class).createUnmarshaller();
-      moneyTransfers = unmarshaller.unmarshal(xml);
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
-    return moneyTransfers;
+    MoneyTransfer moneyTransfer = (MoneyTransfer) unmarshalXmlFile(new File("src/test/resources/money-transfer.xml"));
+    assertThat(moneyTransfer).isNotNull();
+    assertThat(marshalMoneyTransfersToXmlFile(moneyTransfer, new File ("src/test/resources/xfer2.xml"))).exists();
   }
+
+
+  private Object unmarshalXmlFile (File xml) throws JAXBException
+  {
+    return JAXBContext.newInstance(MoneyTransfers.class).createUnmarshaller().unmarshal(xml);
+  }
+
 
   private File marshalMoneyTransfersToXmlFile(Object moneyTransfers, File xml)
   {

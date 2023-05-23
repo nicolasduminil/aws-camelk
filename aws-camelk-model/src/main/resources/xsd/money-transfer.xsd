@@ -3,14 +3,15 @@
           targetNamespace="http://www.simplex-software.fr/money-transfer" xmlns:ss="http://www.simplex-software.fr/money-transfer"
           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:extensionBindingPrefixes="xjc"
           jaxb:version="1.0" elementFormDefault="qualified">
-  <annotation>
+  <!--annotation>
     <appinfo>
       <jaxb:globalBindings>
         <xjc:simple/>
-        <jaxb:serializable/>
       </jaxb:globalBindings>
+      <jaxb:serializable/>
     </appinfo>
-  </annotation>
+  </annotation-->
+
   <simpleType name="BankAccountType" final="restriction">
     <restriction base="string">
       <enumeration value="SAVINGS" />
@@ -54,11 +55,5 @@
     </sequence>
   </complexType>
 
-  <complexType name="MoneyTransfers">
-    <sequence>
-      <element name="moneyTransfer" type="ss:MoneyTransfer" maxOccurs="unbounded" minOccurs="1"/>
-    </sequence>
-  </complexType>
-
-  <element name="moneyTransfers" type="ss:MoneyTransfers"></element>
+  <element name="moneyTransfer" type="ss:MoneyTransfer"/>
 </schema>
