@@ -24,19 +24,14 @@ public class SqsToJaxRsRoute extends RouteBuilder
   public void postConstruct()
   {
     jaxbDataFormat.setContextPath(MoneyTransfer.class.getPackageName());
-    jaxbDataFormat.setPartClass(MoneyTransfer.class.getName());
   }
 
   @Override
   public void configure() throws Exception
   {
     from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
-      .log(LoggingLevel.INFO, "*** Sending: ${body}")
-      .bean(UnmarshalXmlFragment.class)
-      //.unmarshal(jaxbDataFormat)
-      .log (LoggingLevel.INFO, "*** Have unmarshalled from XML to Object: ${body.reference}, ${body.amount}")
+      .unmarshal(jaxbDataFormat)
       .marshal().json(JsonLibrary.Jsonb)
-      .log (LoggingLevel.INFO, "*** Have marshalled from Object to JSON: ${body}")
       .setHeader(Exchange.HTTP_METHOD, constant("POST"))
       .to(http(uri));
   }
