@@ -2,16 +2,11 @@ package fr.simplex_software.quarkus.camel.integrations.s3;
 
 import com.amazonaws.services.s3.*;
 import com.amazonaws.services.s3.model.*;
-import org.apache.camel.*;
 import org.apache.camel.builder.*;
 import org.eclipse.microprofile.config.inject.*;
 
 import javax.enterprise.context.*;
-import javax.enterprise.inject.*;
-import javax.inject.*;
-
 import java.util.*;
-import java.util.stream.*;
 
 import static org.apache.camel.builder.endpoint.StaticEndpointBuilders.*;
 
