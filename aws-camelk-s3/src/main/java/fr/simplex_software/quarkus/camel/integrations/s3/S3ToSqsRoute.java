@@ -2,6 +2,7 @@ package fr.simplex_software.quarkus.camel.integrations.s3;
 
 import com.amazonaws.services.s3.*;
 import com.amazonaws.services.s3.model.*;
+import org.apache.camel.*;
 import org.apache.camel.builder.*;
 import org.eclipse.microprofile.config.inject.*;
 
@@ -37,7 +38,9 @@ public class S3ToSqsRoute extends RouteBuilder
   public void configure()
   {
     from(aws2S3(s3BucketName).useDefaultCredentialsProvider(true))
+      .log (LoggingLevel.DEBUG, "### Have received message :${body}")
       .split().tokenizeXML("moneyTransfer").streaming()
+      .log (LoggingLevel.DEBUG, "### Sending to queue :${body}")
       .to(aws2Sqs(queueName).autoCreateQueue(true).useDefaultCredentialsProvider(true));
   }
 }

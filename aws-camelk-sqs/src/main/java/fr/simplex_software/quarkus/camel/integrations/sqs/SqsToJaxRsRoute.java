@@ -32,6 +32,7 @@ public class SqsToJaxRsRoute extends RouteBuilder
     from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
       .unmarshal(jaxbDataFormat)
       .marshal().json(JsonLibrary.Jsonb)
+      .log (LoggingLevel.DEBUG, "### Sending to REST: ${body}")
       .setHeader(Exchange.HTTP_METHOD, constant("POST"))
       .to(http(uri));
   }

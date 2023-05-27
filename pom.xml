@@ -10,12 +10,12 @@
   <name>AWS CamelK the Master POM</name>
   <modules>
     <module>aws-camelk-model</module>
+    <module>aws-camelk-api</module>
+    <module>aws-camelk-provider</module>
     <module>aws-camelk-file</module>
     <module>aws-camelk-s3</module>
     <module>aws-camelk-sqs</module>
-    <module>aws-camelk-provider</module>
     <module>aws-camelk-jaxrs</module>
-    <module>aws-camelk-api</module>
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
