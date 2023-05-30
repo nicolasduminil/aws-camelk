@@ -23,7 +23,7 @@ public class S3ToSqsRoute extends RouteBuilder
   String queueName;
   public String s3BucketName;
 
-  public S3ToSqsRoute ()
+  public S3ToSqsRoute () throws InterruptedException
   {
     AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard().build();
     Optional<Bucket> optionalBucket = amazonS3.listBuckets().stream().filter(b -> b.getName().startsWith("mys3")).findFirst();
@@ -38,6 +38,6 @@ public class S3ToSqsRoute extends RouteBuilder
   {
     from(aws2S3(s3BucketName).useDefaultCredentialsProvider(true))
       .split().tokenizeXML("moneyTransfer").streaming()
-      .to(aws2Sqs(queueName).autoCreateQueue(true).useDefaultCredentialsProvider(true));
+      .to(aws2Sqs(queueName).autoCreateQueue(true).useDefaultCredentialsProvider(true).region("eu-west-3"));
   }
 }

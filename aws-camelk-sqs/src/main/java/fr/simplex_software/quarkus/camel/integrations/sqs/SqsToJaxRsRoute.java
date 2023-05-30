@@ -29,7 +29,7 @@ public class SqsToJaxRsRoute extends RouteBuilder
   @Override
   public void configure() throws Exception
   {
-    from(aws2Sqs(queueName).useDefaultCredentialsProvider(true))
+    from(aws2Sqs(queueName).useDefaultCredentialsProvider(true).region("eu-west-3"))
       .unmarshal(jaxbDataFormat)
       .marshal().json(JsonLibrary.Jsonb)
       .setHeader(Exchange.HTTP_METHOD, constant("POST"))
