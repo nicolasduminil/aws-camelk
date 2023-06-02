@@ -24,8 +24,8 @@
       <artifactId>camel-quarkus-validator</artifactId>
     </dependency>
     <dependency>
-      <groupId>fr.simplex-software.quarkus.camel.integrations</groupId>
-      <artifactId>aws-camelk-model</artifactId>
+      <groupId>io.quarkiverse.amazonservices</groupId>
+      <artifactId>quarkus-amazon-s3</artifactId>
     </dependency>
   </dependencies>
   <build>

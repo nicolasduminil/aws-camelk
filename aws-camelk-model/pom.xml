@@ -28,6 +28,12 @@
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-value-constructor</artifactId>
             <version>3.0</version>
+            <exclusions>
+              <exclusion>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+              </exclusion>
+            </exclusions>
           </dependency>
         </dependencies>
         <executions>

@@ -28,7 +28,7 @@ public class FileToS3Route extends RouteBuilder
   @ConfigProperty(name="validation-failure-msg")
   String failureMsg;
 
-  public void configure() throws Exception
+  public void configure()
   {
     onException(IOException.class)
       .handled(true)

@@ -1,11 +1,13 @@
 package fr.simplex_software.quarkus.camel.integrations.s3;
 
-import com.amazonaws.services.s3.*;
-import com.amazonaws.services.s3.model.*;
 import org.apache.camel.builder.*;
 import org.eclipse.microprofile.config.inject.*;
+import software.amazon.awssdk.auth.credentials.*;
+import software.amazon.awssdk.services.s3.*;
+import software.amazon.awssdk.services.s3.model.*;
 
 import javax.enterprise.context.*;
+import javax.inject.*;
 import java.util.*;
 
 import static org.apache.camel.builder.endpoint.StaticEndpointBuilders.*;
@@ -17,20 +19,31 @@ public class S3ToSqsRoute extends RouteBuilder
     .limit(5)
     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
     .toString();
+  //@Inject
+  S3Client s3client;
   @ConfigProperty(name="illegal-state-exception-msg")
   String illegalStateExceptionMsg;
   @ConfigProperty(name="sqs-queue-name")
   String queueName;
   public String s3BucketName;
 
-  public S3ToSqsRoute () throws InterruptedException
+  public S3ToSqsRoute() throws InterruptedException
   {
-    AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard().build();
-    Optional<Bucket> optionalBucket = amazonS3.listBuckets().stream().filter(b -> b.getName().startsWith("mys3")).findFirst();
-    if (optionalBucket.isPresent())
-      this.s3BucketName = optionalBucket.get().getName();
+    s3client = S3Client.builder().credentialsProvider(ProfileCredentialsProvider.create()).build();
+    if (s3client == null)
+      System.out.println ("### S3ToSqsRoute(): s3client is null");
     else
-      this.s3BucketName = amazonS3.createBucket("mys3" + RANDOM).getName();
+      System.out.println ("### S3ToSqsRoute(): s3client is not null");
+    Optional<Bucket> optionalBucket = s3client.listBuckets().buckets().stream().filter(b -> b.name().startsWith("mys3")).findFirst();
+    System.out.println ("### S3ToSqsRoute()");
+    if (optionalBucket.isPresent())
+      s3BucketName = optionalBucket.get().name();
+    else
+    {
+      s3BucketName = "mys3" + RANDOM;
+      s3client.createBucket(CreateBucketRequest.builder().bucket(s3BucketName).build());
+      s3client.waiter().waitUntilBucketExists(HeadBucketRequest.builder().bucket(s3BucketName).build());
+    }
   }
 
   @Override
@@ -38,6 +51,6 @@ public class S3ToSqsRoute extends RouteBuilder
   {
     from(aws2S3(s3BucketName).useDefaultCredentialsProvider(true))
       .split().tokenizeXML("moneyTransfer").streaming()
-      .to(aws2Sqs(queueName).autoCreateQueue(true).useDefaultCredentialsProvider(true).region("eu-west-3"));
+      .to(aws2Sqs(queueName).autoCreateQueue(true).useDefaultCredentialsProvider(true));
   }
 }

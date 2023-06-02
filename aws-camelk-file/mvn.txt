@@ -1,0 +1,213 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---< [0;36mfr.simplex-software.quarkus.camel.integrations:aws-camelk-file[0;1m >---[m
+[[1;34mINFO[m] [1mBuilding AWS CamelK :: The File to S3 Module 1.0.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-dependency-plugin:2.8:tree[m [1m(default-cli)[m @ [36maws-camelk-file[0;1m ---[m
+[[1;34mINFO[m] fr.simplex-software.quarkus.camel.integrations:aws-camelk-file:jar:1.0.0-SNAPSHOT
+[[1;34mINFO[m] +- org.apache.camel.quarkus:camel-quarkus-file:jar:2.16.0:compile
+[[1;34mINFO[m] |  \- org.apache.camel:camel-file:jar:3.20.1:compile
+[[1;34mINFO[m] |     +- org.apache.camel:camel-support:jar:3.20.1:compile
+[[1;34mINFO[m] |     \- org.apache.camel:camel-cluster:jar:3.20.1:compile
+[[1;34mINFO[m] +- org.apache.camel.quarkus:camel-quarkus-aws2-s3:jar:2.16.0:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-aws2-s3:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:apache-client:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  \- org.apache.camel:camel-health:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel.quarkus:camel-quarkus-support-aws2:jar:2.16.0:compile
+[[1;34mINFO[m] |  |  \- org.apache.camel.quarkus:camel-quarkus-support-httpclient:jar:2.16.0:compile
+[[1;34mINFO[m] |  |     +- io.quarkus:quarkus-apache-httpclient:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |     \- org.apache.camel.quarkus:camel-quarkus-support-commons-logging:jar:2.16.0:compile
+[[1;34mINFO[m] |  \- io.quarkus:quarkus-jaxp:jar:2.16.6.Final:compile
+[[1;34mINFO[m] +- org.apache.camel.quarkus:camel-quarkus-validator:jar:2.16.0:compile
+[[1;34mINFO[m] |  \- org.apache.camel:camel-validator:jar:3.20.1:compile
+[[1;34mINFO[m] |     \- org.apache.camel:camel-xml-jaxp:jar:3.20.1:compile
+[[1;34mINFO[m] |        \- org.apache.camel:camel-xml-io-util:jar:3.20.1:compile
+[[1;34mINFO[m] +- io.quarkiverse.amazonservices:quarkus-amazon-s3:jar:1.4.0:compile
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-core:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[[1;34mINFO[m] |  |  +- jakarta.enterprise:jakarta.enterprise.cdi-api:jar:2.0.2:compile
+[[1;34mINFO[m] |  |  |  +- jakarta.el:jakarta.el-api:jar:3.0.3:compile
+[[1;34mINFO[m] |  |  |  \- jakarta.interceptor:jakarta.interceptor-api:jar:1.2.5:compile
+[[1;34mINFO[m] |  |  +- jakarta.inject:jakarta.inject-api:jar:1.0:compile
+[[1;34mINFO[m] |  |  +- io.quarkus:quarkus-ide-launcher:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |  +- io.smallrye.config:smallrye-config:jar:2.13.3:compile
+[[1;34mINFO[m] |  |  |  \- io.smallrye.config:smallrye-config-core:jar:2.13.3:compile
+[[1;34mINFO[m] |  |  |     +- io.smallrye.common:smallrye-common-expression:jar:1.13.2:compile
+[[1;34mINFO[m] |  |  |     |  \- io.smallrye.common:smallrye-common-function:jar:1.13.2:compile
+[[1;34mINFO[m] |  |  |     +- io.smallrye.common:smallrye-common-constraint:jar:1.13.2:compile
+[[1;34mINFO[m] |  |  |     +- io.smallrye.common:smallrye-common-classloader:jar:1.13.2:compile
+[[1;34mINFO[m] |  |  |     \- io.smallrye.config:smallrye-config-common:jar:2.13.3:compile
+[[1;34mINFO[m] |  |  +- org.jboss.logging:jboss-logging:jar:3.5.0.Final:compile
+[[1;34mINFO[m] |  |  +- org.jboss.logmanager:jboss-logmanager-embedded:jar:1.0.11:compile
+[[1;34mINFO[m] |  |  +- org.jboss.logging:jboss-logging-annotations:jar:2.2.1.Final:compile
+[[1;34mINFO[m] |  |  +- org.jboss.threads:jboss-threads:jar:3.4.3.Final:compile
+[[1;34mINFO[m] |  |  +- org.slf4j:slf4j-api:jar:1.7.36:compile
+[[1;34mINFO[m] |  |  +- org.jboss.slf4j:slf4j-jboss-logmanager:jar:1.2.0.Final:compile
+[[1;34mINFO[m] |  |  +- org.graalvm.sdk:graal-sdk:jar:22.3.0:compile
+[[1;34mINFO[m] |  |  +- org.wildfly.common:wildfly-common:jar:1.5.4.Final-format-001:compile
+[[1;34mINFO[m] |  |  +- io.quarkus:quarkus-bootstrap-runner:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |  |  \- io.github.crac:org-crac:jar:0.1.3:compile
+[[1;34mINFO[m] |  |  \- io.quarkus:quarkus-fs-util:jar:0.0.9:compile
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-netty:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |  +- io.netty:netty-codec:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  |  +- io.netty:netty-common:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  |  +- io.netty:netty-buffer:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  |  \- io.netty:netty-transport:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  +- io.netty:netty-codec-http:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  +- io.netty:netty-codec-http2:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  +- io.netty:netty-handler:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  |  +- io.netty:netty-resolver:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  |  \- io.netty:netty-transport-native-unix-common:jar:4.1.86.Final:compile
+[[1;34mINFO[m] |  |  \- com.aayushatharva.brotli4j:brotli4j:jar:1.8.0:compile
+[[1;34mINFO[m] |  |     \- com.aayushatharva.brotli4j:native-linux-x86_64:jar:1.8.0:compile
+[[1;34mINFO[m] |  +- io.quarkiverse.amazonservices:quarkus-amazon-common:jar:1.4.0:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:sdk-core:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:aws-core:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  |  \- software.amazon.eventstream:eventstream:jar:1.0.1:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:regions:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  \- software.amazon.awssdk:auth:jar:2.18.41:compile
+[[1;34mINFO[m] |  +- software.amazon.awssdk:s3:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:aws-xml-protocol:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  |  \- software.amazon.awssdk:aws-query-protocol:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:protocol-core:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:arns:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:profiles:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:metrics-spi:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  +- software.amazon.awssdk:json-utils:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  |  \- software.amazon.awssdk:third-party-jackson-core:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  \- software.amazon.awssdk:endpoints-spi:jar:2.18.41:compile
+[[1;34mINFO[m] |  +- software.amazon.awssdk.crt:aws-crt:jar:0.20.4:compile
+[[1;34mINFO[m] |  \- org.jboss.logging:commons-logging-jboss-logging:jar:1.0.0.Final:compile
+[[1;34mINFO[m] +- fr.simplex-software.quarkus.camel.integrations:aws-camelk-model:jar:1.0.0-SNAPSHOT:compile
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-jaxb:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |  \- org.glassfish.jaxb:jaxb-runtime:jar:2.3.3-b02:compile
+[[1;34mINFO[m] |  |     +- org.glassfish.jaxb:txw2:jar:2.3.3-b02:compile
+[[1;34mINFO[m] |  |     +- com.sun.istack:istack-commons-runtime:jar:3.0.10:compile
+[[1;34mINFO[m] |  |     \- com.sun.activation:jakarta.activation:jar:1.2.1:runtime
+[[1;34mINFO[m] |  \- commons-logging:commons-logging:jar:1.2:compile
+[[1;34mINFO[m] +- io.quarkus:quarkus-arc:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  +- io.quarkus.arc:arc:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  |  +- jakarta.transaction:jakarta.transaction-api:jar:1.3.3:compile
+[[1;34mINFO[m] |  |  \- io.smallrye.reactive:mutiny:jar:1.9.0:compile
+[[1;34mINFO[m] |  |     \- io.smallrye.common:smallrye-common-annotation:jar:1.13.2:compile
+[[1;34mINFO[m] |  \- org.eclipse.microprofile.context-propagation:microprofile-context-propagation-api:jar:1.2:compile
+[[1;34mINFO[m] +- org.apache.camel.quarkus:camel-quarkus-core:jar:2.16.0:compile
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-development-mode-spi:jar:2.16.6.Final:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-base:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  +- org.apache.camel:camel-api:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  +- org.apache.camel:camel-management-api:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  \- org.apache.camel:camel-util:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-componentdsl:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-core-catalog:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  \- org.apache.camel:camel-tooling-model:jar:3.20.1:compile
+[[1;34mINFO[m] |  |     \- org.apache.camel:camel-util-json:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-core-engine:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  +- org.apache.camel:camel-base-engine:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  \- org.apache.camel:camel-core-reifier:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-core-languages:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  \- org.apache.camel:camel-core-model:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-core-processor:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-endpointdsl:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-main:jar:3.20.1:compile
+[[1;34mINFO[m] |  +- org.apache.camel:camel-microprofile-config:jar:3.20.1:compile
+[[1;34mINFO[m] |  |  \- org.eclipse.microprofile.config:microprofile-config-api:jar:2.0.1:compile
+[[1;34mINFO[m] |  \- org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec:jar:2.0.0.Final:compile
+[[1;34mINFO[m] +- org.apache.camel.quarkus:camel-quarkus-log:jar:2.16.0:compile
+[[1;34mINFO[m] |  \- org.apache.camel:camel-log:jar:3.20.1:compile
+[[1;34mINFO[m] +- software.amazon.awssdk:url-connection-client:jar:2.18.41:compile
+[[1;34mINFO[m] |  +- software.amazon.awssdk:utils:jar:2.18.41:compile
+[[1;34mINFO[m] |  |  \- org.reactivestreams:reactive-streams:jar:1.0.3:compile
+[[1;34mINFO[m] |  +- software.amazon.awssdk:annotations:jar:2.18.41:compile
+[[1;34mINFO[m] |  \- software.amazon.awssdk:http-client-spi:jar:2.18.41:compile
+[[1;34mINFO[m] +- io.quarkus:quarkus-junit5:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-bootstrap-core:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  +- io.quarkus:quarkus-bootstrap-app-model:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  \- io.smallrye.common:smallrye-common-io:jar:1.13.2:compile
+[[1;34mINFO[m] |  +- org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5:test
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-test-common:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  +- io.quarkus:quarkus-core-deployment:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  |  +- org.aesh:readline:jar:2.2:test
+[[1;34mINFO[m] |  |  |  |  \- org.fusesource.jansi:jansi:jar:1.18:test
+[[1;34mINFO[m] |  |  |  +- org.aesh:aesh:jar:2.7:test
+[[1;34mINFO[m] |  |  |  +- io.quarkus.gizmo:gizmo:jar:1.6.0.Final:test
+[[1;34mINFO[m] |  |  |  |  \- org.ow2.asm:asm-util:jar:9.4:test
+[[1;34mINFO[m] |  |  |  |     \- org.ow2.asm:asm-analysis:jar:9.4:test
+[[1;34mINFO[m] |  |  |  +- org.ow2.asm:asm:jar:9.4:test
+[[1;34mINFO[m] |  |  |  +- org.ow2.asm:asm-commons:jar:9.4:test
+[[1;34mINFO[m] |  |  |  |  \- org.ow2.asm:asm-tree:jar:9.4:test
+[[1;34mINFO[m] |  |  |  +- io.quarkus:quarkus-class-change-agent:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  |  +- io.quarkus:quarkus-devtools-utilities:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  |  +- io.quarkus:quarkus-builder:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  |  \- org.junit.platform:junit-platform-launcher:jar:1.9.2:test
+[[1;34mINFO[m] |  |  +- io.quarkus:quarkus-bootstrap-maven-resolver:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  |  +- org.apache.maven:maven-embedder:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-settings:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-core:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  |  +- org.apache.maven:maven-artifact:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  |  \- org.codehaus.plexus:plexus-component-annotations:jar:2.1.0:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-plugin-api:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-model:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-model-builder:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-builder-support:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven.resolver:maven-resolver-api:jar:1.6.3:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven.resolver:maven-resolver-util:jar:1.6.3:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven.shared:maven-shared-utils:jar:3.3.4:test
+[[1;34mINFO[m] |  |  |  |  |  \- commons-io:commons-io:jar:2.11.0:test
+[[1;34mINFO[m] |  |  |  |  +- com.google.inject:guice:jar:no_aop:4.2.2:test
+[[1;34mINFO[m] |  |  |  |  |  \- com.google.guava:guava:jar:31.1-jre:test
+[[1;34mINFO[m] |  |  |  |  |     \- com.google.guava:failureaccess:jar:1.0.1:test
+[[1;34mINFO[m] |  |  |  |  +- org.codehaus.plexus:plexus-classworlds:jar:2.6.0:test
+[[1;34mINFO[m] |  |  |  |  +- org.codehaus.plexus:plexus-sec-dispatcher:jar:2.0:test
+[[1;34mINFO[m] |  |  |  |  +- org.codehaus.plexus:plexus-cipher:jar:2.0:test
+[[1;34mINFO[m] |  |  |  |  \- commons-cli:commons-cli:jar:1.4:test
+[[1;34mINFO[m] |  |  |  +- org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.5:test
+[[1;34mINFO[m] |  |  |  +- org.apache.maven:maven-settings-builder:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  \- org.codehaus.plexus:plexus-interpolation:jar:1.26:test
+[[1;34mINFO[m] |  |  |  +- org.apache.maven:maven-resolver-provider:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven:maven-repository-metadata:jar:3.8.6:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven.resolver:maven-resolver-spi:jar:1.6.3:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven.resolver:maven-resolver-impl:jar:1.6.3:test
+[[1;34mINFO[m] |  |  |  |  \- org.codehaus.plexus:plexus-utils:jar:3.3.0:test
+[[1;34mINFO[m] |  |  |  +- org.apache.maven.resolver:maven-resolver-connector-basic:jar:1.6.3:test
+[[1;34mINFO[m] |  |  |  +- org.apache.maven.resolver:maven-resolver-transport-wagon:jar:1.6.3:test
+[[1;34mINFO[m] |  |  |  +- org.apache.maven.wagon:wagon-http:jar:3.5.1:test
+[[1;34mINFO[m] |  |  |  |  +- org.apache.maven.wagon:wagon-http-shared:jar:3.5.1:test
+[[1;34mINFO[m] |  |  |  |  \- org.apache.maven.wagon:wagon-provider-api:jar:3.5.1:test
+[[1;34mINFO[m] |  |  |  \- org.apache.maven.wagon:wagon-file:jar:3.5.1:test
+[[1;34mINFO[m] |  |  +- io.quarkus:quarkus-bootstrap-gradle-resolver:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  |  \- io.smallrye:jandex:jar:3.0.5:test
+[[1;34mINFO[m] |  +- io.quarkus:quarkus-junit5-properties:jar:2.16.6.Final:test
+[[1;34mINFO[m] |  +- org.junit.jupiter:junit-jupiter:jar:5.9.2:test
+[[1;34mINFO[m] |  |  +- org.junit.jupiter:junit-jupiter-api:jar:5.9.2:test
+[[1;34mINFO[m] |  |  |  +- org.opentest4j:opentest4j:jar:1.2.0:test
+[[1;34mINFO[m] |  |  |  +- org.junit.platform:junit-platform-commons:jar:1.9.2:test
+[[1;34mINFO[m] |  |  |  \- org.apiguardian:apiguardian-api:jar:1.1.2:test
+[[1;34mINFO[m] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.9.2:test
+[[1;34mINFO[m] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.9.2:test
+[[1;34mINFO[m] |  |     \- org.junit.platform:junit-platform-engine:jar:1.9.2:test
+[[1;34mINFO[m] |  \- com.thoughtworks.xstream:xstream:jar:1.4.20:test
+[[1;34mINFO[m] |     \- io.github.x-stream:mxparser:jar:1.2.2:test
+[[1;34mINFO[m] |        \- xmlpull:xmlpull:jar:1.1.3.1:test
+[[1;34mINFO[m] +- io.rest-assured:rest-assured:jar:4.5.1:test
+[[1;34mINFO[m] |  +- org.codehaus.groovy:groovy:jar:3.0.8:test
+[[1;34mINFO[m] |  +- org.codehaus.groovy:groovy-xml:jar:3.0.9:test
+[[1;34mINFO[m] |  +- org.apache.httpcomponents:httpclient:jar:4.5.14:compile
+[[1;34mINFO[m] |  |  +- org.apache.httpcomponents:httpcore:jar:4.4.16:compile
+[[1;34mINFO[m] |  |  \- commons-codec:commons-codec:jar:1.15:compile
+[[1;34mINFO[m] |  +- org.apache.httpcomponents:httpmime:jar:4.5.14:test
+[[1;34mINFO[m] |  +- org.hamcrest:hamcrest:jar:2.1:test
+[[1;34mINFO[m] |  +- org.ccil.cowan.tagsoup:tagsoup:jar:1.2.1:test
+[[1;34mINFO[m] |  +- io.rest-assured:json-path:jar:4.5.1:test
+[[1;34mINFO[m] |  |  +- org.codehaus.groovy:groovy-json:jar:3.0.9:test
+[[1;34mINFO[m] |  |  \- io.rest-assured:rest-assured-common:jar:4.5.1:test
+[[1;34mINFO[m] |  \- io.rest-assured:xml-path:jar:4.5.1:test
+[[1;34mINFO[m] |     \- org.apache.commons:commons-lang3:jar:3.12.0:test
+[[1;34mINFO[m] \- org.assertj:assertj-core:jar:3.23.1:test
+[[1;34mINFO[m]    \- net.bytebuddy:byte-buddy:jar:1.12.18:test
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  1.456 s
+[[1;34mINFO[m] Finished at: 2023-06-02T01:25:47+02:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m

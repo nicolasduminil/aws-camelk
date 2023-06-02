@@ -1,13 +1,15 @@
 package fr.simplex_software.quarkus.camel.integrations.s3.tests;
 
-import com.amazonaws.services.sqs.*;
-import com.amazonaws.services.sqs.model.Message;
 import fr.simplex_software.quarkus.camel.integrations.s3.*;
 import io.quarkus.test.junit.*;
 import org.apache.camel.*;
 import org.apache.camel.component.aws2.s3.*;
 import org.eclipse.microprofile.config.inject.*;
 import org.junit.jupiter.api.*;
+import software.amazon.awssdk.services.s3.*;
+import software.amazon.awssdk.services.sqs.*;
+import software.amazon.awssdk.services.sqs.model.*;
+import software.amazon.awssdk.services.sqs.model.Message;
 
 import javax.inject.*;
 import java.util.*;
@@ -19,10 +21,13 @@ import static org.assertj.core.api.Assertions.*;
 public class TestS3ToSqsRoute
 {
   @Inject
+  SqsClient sqsclient;
+  @Inject
+  S3Client s3client;
+  @Inject
   ProducerTemplate producer;
   @ConfigProperty(name = "sqs-queue-name")
   String queueName;
-  private final AmazonSQS amazonSqsClient = AmazonSQSClientBuilder.defaultClient();
   @Inject
   CamelContext camelContext;
   @Inject
@@ -47,20 +52,20 @@ public class TestS3ToSqsRoute
   public void testSendMessageToSQS() throws Exception
   {
     producer.sendBodyAndHeader(String.format(ENDPOINT_URI, s3ToSqsRoute.s3BucketName), BODY, AWS2S3Constants.KEY, "test.xml");
-    Thread.sleep(2000);
-    String queueUrl = amazonSqsClient.getQueueUrl(queueName).getQueueUrl();
+    String queueUrl = sqsclient.getQueueUrl(GetQueueUrlRequest.builder().queueName(queueName).build()).queueUrl();
     assertThat(queueUrl).isNotNull();
-    List<Message> messages = amazonSqsClient.receiveMessage(queueUrl).getMessages();
+    ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder().queueUrl(queueUrl).maxNumberOfMessages(5).build();
+    List<Message> messages = sqsclient.receiveMessage(receiveMessageRequest).messages();
     assertThat(messages).isNotNull();
     assertThat(messages.size()).isGreaterThan(0);
     messages.forEach(msg ->
     {
       assertThat(msg).isNotNull();
-      assertThat(msg.getBody()).isEqualTo(BODY);
-      amazonSqsClient.deleteMessage(queueUrl, msg.getReceiptHandle());
+      assertThat(msg.body()).isEqualTo(BODY);
+      sqsclient.deleteMessage(DeleteMessageRequest.builder().queueUrl(queueUrl).build());
     });
-    messages = amazonSqsClient.receiveMessage(queueUrl).getMessages();
+    messages = sqsclient.receiveMessage(receiveMessageRequest).messages();
     assertThat(messages).hasSize(0);
-    amazonSqsClient.deleteQueue(queueUrl);
+    sqsclient.deleteQueue(DeleteQueueRequest.builder().queueUrl(queueUrl).build());
   }
 }

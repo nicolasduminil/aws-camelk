@@ -46,9 +46,9 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-bom</artifactId>
-        <version>1.12.454</version>
+        <groupId>io.quarkus.platform</groupId>
+        <artifactId>quarkus-amazon-services-bom</artifactId>
+        <version>${quarkus.platform.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -78,9 +78,8 @@
       <artifactId>camel-quarkus-log</artifactId>
     </dependency>
     <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>1.2</version>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>url-connection-client</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -124,7 +123,7 @@
           <configuration>
             <systemPropertyVariables>
               <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
-            </systemPropertyVariables>
+              <software.amazon.awssdk.http.service.impl>software.amazon.awssdk.http.urlconnection.UrlConnectionSdkHttpService</software.amazon.awssdk.http.service.impl>            </systemPropertyVariables>
           </configuration>
         </plugin>
         <plugin>

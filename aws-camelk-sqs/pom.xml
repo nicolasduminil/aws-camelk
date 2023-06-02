@@ -36,8 +36,8 @@
       <artifactId>camel-quarkus-jsonb</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk-sqs</artifactId>
+      <groupId>io.quarkiverse.amazonservices</groupId>
+      <artifactId>quarkus-amazon-sqs</artifactId>
     </dependency>
     <dependency>
       <groupId>fr.simplex-software.quarkus.camel.integrations</groupId>
