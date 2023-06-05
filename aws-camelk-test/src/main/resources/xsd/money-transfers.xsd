@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+          targetNamespace="http://www.simplex-software.fr/money-transfer" xmlns:ss="http://www.simplex-software.fr/money-transfer"
+          xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:extensionBindingPrefixes="xjc"
+          jaxb:version="1.0" elementFormDefault="qualified">
+  <include schemaLocation="money-transfer.xsd"/>
+
+  <annotation>
+    <appinfo>
+      <jaxb:globalBindings>
+        <xjc:simple/>
+      </jaxb:globalBindings>
+      <jaxb:serializable/>
+    </appinfo>
+  </annotation>
+
+  <complexType name="MoneyTransfers">
+    <sequence>
+      <element name="moneyTransfer" type="ss:MoneyTransfer" maxOccurs="unbounded" minOccurs="1"/>
+    </sequence>
+  </complexType>
+
+  <element name="moneyTransfers" type="ss:MoneyTransfers"/>
+</schema>

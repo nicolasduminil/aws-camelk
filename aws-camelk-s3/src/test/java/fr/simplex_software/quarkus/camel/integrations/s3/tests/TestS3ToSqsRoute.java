@@ -8,8 +8,8 @@ import org.eclipse.microprofile.config.inject.*;
 import org.junit.jupiter.api.*;
 import software.amazon.awssdk.services.s3.*;
 import software.amazon.awssdk.services.sqs.*;
-import software.amazon.awssdk.services.sqs.model.*;
 import software.amazon.awssdk.services.sqs.model.Message;
+import software.amazon.awssdk.services.sqs.model.*;
 
 import javax.inject.*;
 import java.util.*;
@@ -49,9 +49,11 @@ public class TestS3ToSqsRoute
   }
 
   @Test
-  public void testSendMessageToSQS() throws Exception
+  public void testSendMessageToSQS()
   {
-    producer.sendBodyAndHeader(String.format(ENDPOINT_URI, s3ToSqsRoute.s3BucketName), BODY, AWS2S3Constants.KEY, "test.xml");
+    String fmt = String.format(ENDPOINT_URI, s3ToSqsRoute.s3BucketName);
+    System.out.println ("### Producing to " + fmt);
+    producer.sendBodyAndHeader(fmt, BODY, AWS2S3Constants.KEY, "test.xml");
     String queueUrl = sqsclient.getQueueUrl(GetQueueUrlRequest.builder().queueName(queueName).build()).queueUrl();
     assertThat(queueUrl).isNotNull();
     ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder().queueUrl(queueUrl).maxNumberOfMessages(5).build();

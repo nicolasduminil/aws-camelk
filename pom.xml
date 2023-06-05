@@ -16,6 +16,7 @@
     <module>aws-camelk-provider</module>
     <module>aws-camelk-jaxrs</module>
     <module>aws-camelk-api</module>
+    <module>aws-camelk-test</module>
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
