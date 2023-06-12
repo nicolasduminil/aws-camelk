@@ -5,8 +5,10 @@ import org.apache.camel.builder.*;
 import org.apache.camel.component.aws2.s3.*;
 import org.apache.camel.component.file.*;
 import org.eclipse.microprofile.config.inject.*;
+import software.amazon.awssdk.services.s3.*;
 
 import javax.enterprise.context.*;
+import javax.inject.*;
 import java.io.*;
 import java.util.*;
 
@@ -27,6 +29,8 @@ public class FileToS3Route extends RouteBuilder
   String exMsg;
   @ConfigProperty(name="validation-failure-msg")
   String failureMsg;
+  @Inject
+  S3Client s3client;
 
   public void configure()
   {

@@ -3,11 +3,14 @@ package fr.simplex_software.quarkus.camel.integrations.s3;
 import org.apache.camel.builder.*;
 import org.eclipse.microprofile.config.inject.*;
 import software.amazon.awssdk.auth.credentials.*;
+import software.amazon.awssdk.http.urlconnection.*;
 import software.amazon.awssdk.regions.*;
 import software.amazon.awssdk.services.s3.*;
 import software.amazon.awssdk.services.s3.model.*;
+import software.amazon.awssdk.services.sqs.*;
 
 import javax.enterprise.context.*;
+import javax.inject.*;
 import java.util.*;
 
 import static org.apache.camel.builder.endpoint.StaticEndpointBuilders.*;
@@ -19,15 +22,17 @@ public class S3ToSqsRoute extends RouteBuilder
     .limit(5)
     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
     .toString();
-  //@Inject
+  @Inject
   S3Client s3client;
+  @Inject
+  SqsClient sqsClient;
   @ConfigProperty(name="sqs-queue-name")
   String queueName;
   public String s3BucketName;
 
   public S3ToSqsRoute() throws InterruptedException
   {
-    s3client = S3Client.builder().region(Region.EU_WEST_3).credentialsProvider(ProfileCredentialsProvider.create()).build();
+    s3client = S3Client.builder().httpClient(UrlConnectionHttpClient.builder().build()).build();
     Optional<Bucket> optionalBucket = s3client.listBuckets().buckets().stream().filter(b -> b.name().startsWith("mys3")).findFirst();
     if (optionalBucket.isPresent())
       s3BucketName = optionalBucket.get().name();
@@ -37,7 +42,6 @@ public class S3ToSqsRoute extends RouteBuilder
       s3client.createBucket(CreateBucketRequest.builder().bucket(s3BucketName).build());
       s3client.waiter().waitUntilBucketExists(HeadBucketRequest.builder().bucket(s3BucketName).build());
     }
-    System.out.println ("### S3ToSqsRoute(): Bucket name " + s3BucketName);
   }
 
   @Override
