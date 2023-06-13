@@ -18,7 +18,7 @@ public class TestFileToS3Route
 {
   @Inject
   S3Client s3client;
-  @EndpointInject("file://tmp/input?delete=true&idempotent=true")
+  @EndpointInject("file:/tmp/input?delete=true&idempotent=true")
   ProducerTemplate producerTemplate;
   private static List<Bucket> buckets;
 

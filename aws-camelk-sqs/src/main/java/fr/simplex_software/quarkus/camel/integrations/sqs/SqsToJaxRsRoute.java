@@ -27,7 +27,7 @@ public class SqsToJaxRsRoute extends RouteBuilder
   @PostConstruct
   public void postConstruct()
   {
-    jaxbDataFormat.setContextPath("fr.simplex_software.quarkus.camel.integrations.jaxb");
+    jaxbDataFormat.setContextPath(MoneyTransfer.class.getPackageName());
   }
 
   @Override

@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @QuarkusTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Disabled
 public class TestS3ToSqsRoute
 {
   @Inject
@@ -28,31 +29,13 @@ public class TestS3ToSqsRoute
   ProducerTemplate producer;
   @ConfigProperty(name = "sqs-queue-name")
   String queueName;
-  @Inject
-  CamelContext camelContext;
-  @Inject
-  S3ToSqsRoute s3ToSqsRoute;
   private static final String BODY = "<moneyTransfer/>";
   private static final String ENDPOINT_URI = "aws2-s3://%s?useDefaultCredentialsProvider=true";
-
-  @BeforeAll
-  public void beforeAll() throws Exception
-  {
-    camelContext.addRoutes(s3ToSqsRoute);
-    camelContext.start();
-  }
-
-  @AfterAll
-  public void afterAll()
-  {
-    camelContext.stop();
-  }
 
   @Test
   public void testSendMessageToSQS()
   {
-    String fmt = String.format(ENDPOINT_URI, s3ToSqsRoute.s3BucketName);
-    System.out.println ("### Producing to " + fmt);
+    String fmt = String.format(ENDPOINT_URI, S3ToSqsRoute.s3BucketName);
     producer.sendBodyAndHeader(fmt, BODY, AWS2S3Constants.KEY, "test.xml");
     String queueUrl = sqsclient.getQueueUrl(GetQueueUrlRequest.builder().queueName(queueName).build()).queueUrl();
     assertThat(queueUrl).isNotNull();

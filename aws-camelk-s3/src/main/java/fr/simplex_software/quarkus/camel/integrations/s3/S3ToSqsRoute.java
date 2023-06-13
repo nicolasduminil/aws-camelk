@@ -2,9 +2,7 @@ package fr.simplex_software.quarkus.camel.integrations.s3;
 
 import org.apache.camel.builder.*;
 import org.eclipse.microprofile.config.inject.*;
-import software.amazon.awssdk.auth.credentials.*;
 import software.amazon.awssdk.http.urlconnection.*;
-import software.amazon.awssdk.regions.*;
 import software.amazon.awssdk.services.s3.*;
 import software.amazon.awssdk.services.s3.model.*;
 import software.amazon.awssdk.services.sqs.*;
@@ -28,7 +26,7 @@ public class S3ToSqsRoute extends RouteBuilder
   SqsClient sqsClient;
   @ConfigProperty(name="sqs-queue-name")
   String queueName;
-  public String s3BucketName;
+  public static String s3BucketName;
 
   public S3ToSqsRoute() throws InterruptedException
   {

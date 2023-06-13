@@ -37,14 +37,13 @@ public class FileToS3Route extends RouteBuilder
     onException(IOException.class)
       .handled(true)
       .log(LoggingLevel.ERROR, exMsg + " ${exception.message}");
-    fromF("file://%s?include=.*.xml&delete=true&idempotent=true&bridgeErrorHandler=true", inBox)
+    fromF("file:%s?include=.*.xml&delete=true&idempotent=true&bridgeErrorHandler=true", inBox)
       .doTry()
         .to("validator:xsd/money-transfers.xsd")
         .setHeader(AWS2S3Constants.KEY, header(FileConstants.FILE_NAME))
         .to(aws2S3(s3Name + RANDOM).autoCreateBucket(true).useDefaultCredentialsProvider(true))
       .doCatch(ValidationException.class)
         .log(LoggingLevel.ERROR, failureMsg + " ${exception.message}")
-      .doFinally()
       .end();
   }
 }
