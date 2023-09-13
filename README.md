@@ -31,9 +31,23 @@ Here are the steps required to clone the project:
 
 Here are the steps required to create the Kubernetes namespace and secret:
 
-    $ kubectl create namespace quarkus-camel
-    $ kubectl apply -f aws-secret.yaml --namespace quarkus-camel
-    $ ./start-ms.sh
+- First encode your AWS access key ID and secret access key in Base64 as follows:
+    
+      $ echo -n <your AWS access key ID> | base64
+      $ echo -n <your AWS secret access key> | base64
+
+- Create a K8s custom name space:
+
+      $ kubectl create namespace quarkus-camel
+
+- Edit the file `aws-secret.yaml` and amend the following lines such that to replace `...` by the Base64 encoded values:
+
+      AWS_ACCESS_KEY_ID: ...
+      AWS_SECRET_ACCESS_KEY: ...
+
+- Create the K8s secret containing the AWS access key ID and secret access key:
+
+      $ kubectl apply -f aws-secret.yaml --namespace quarkus-camel
 
 ### Start the microservices
 
